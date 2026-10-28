@@ -36,33 +36,6 @@ const CADENCE = [
   },
 ];
 
-const QUOTES = [
-  {
-    accent: "#8C1027",
-    text: "It found a hole in our payments flow that two manual reviews had signed off. We shipped the fix that afternoon.",
-    role: "Head of Security Engineering",
-    org: "FINTECH · 240 ENGINEERS",
-    stat: "1 day",
-    statNote: "from found to fixed",
-  },
-  {
-    accent: "#0F7B8A",
-    text: "We used to test once a year and hope. Now it runs every week, and it finds more each time because it remembers where to look.",
-    role: "Director of Platform Engineering",
-    org: "B2B SAAS · 90 ENGINEERS",
-    stat: "12×",
-    statNote: "more testing per year",
-  },
-  {
-    accent: "#3D4E9E",
-    text: "The record of what it did, and what it refused to do, is what got this through our risk review.",
-    role: "Head of Risk and Compliance",
-    org: "HEALTHCARE · REGULATED",
-    stat: "2 weeks",
-    statNote: "saved on review",
-  },
-];
-
 const CTA_ROWS: [string, string][] = [
   ["One asset", "is all we need to begin"],
   ["Hours", "to the first proven finding"],
@@ -328,43 +301,6 @@ export default function Home() {
             <Link href="/platform" className="link-u">
               HOW IT WORKS
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- field reports ---------- */}
-      <section className="sec sec--hair sec--paper">
-        <div className="wrap pad">
-          <div className="headrow" style={{ marginBottom: 40 }}>
-            <div>
-              <Eyebrow num="IV.">FIELD REPORTS</Eyebrow>
-              <h2 className="h2 reveal" style={{ maxWidth: 660, marginTop: 26 }}>
-                What leaders are saying.
-              </h2>
-            </div>
-            <p className="body" style={{ maxWidth: 320, color: "var(--slate-2)" }}>
-              Attributed by role and sector. Named references available on request.
-            </p>
-          </div>
-
-          <div className={s.quotes}>
-            {QUOTES.map((q) => (
-              <div
-                key={q.role}
-                className={`${s.quoteCard} reveal lift`}
-                style={{ ["--accent" as string]: q.accent }}
-              >
-                <p className={s.quoteText}>{q.text}</p>
-                <div className={s.quoteMeta}>
-                  <div className={s.quoteRole}>{q.role}</div>
-                  <div className={s.quoteOrg}>{q.org}</div>
-                  <div className={s.quoteStat}>
-                    <b>{q.stat}</b>
-                    <span>{q.statNote}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
