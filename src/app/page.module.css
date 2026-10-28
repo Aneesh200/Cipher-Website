@@ -256,75 +256,6 @@
   flex-wrap: wrap;
 }
 
-/* ---------- field reports ---------- */
-
-.quotes {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.quoteCard {
-  border: 1px solid var(--line-2);
-  border-top: 3px solid var(--accent, var(--crimson));
-  background: var(--white);
-  padding: 32px 32px 28px;
-  display: flex;
-  flex-direction: column;
-}
-
-.quoteText {
-  font-size: clamp(1rem, 1.2vw, 1.1875rem);
-  line-height: 1.5;
-  color: var(--ink);
-  margin: 0 0 24px;
-}
-
-.quoteMeta {
-  margin-top: auto;
-  padding-top: 20px;
-  border-top: 1px solid var(--line-2);
-}
-
-.quoteRole {
-  font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.quoteOrg {
-  font-family: var(--font-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--mute-2);
-  margin-bottom: 16px;
-}
-
-.quoteStat {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.quoteStat b {
-  font-size: 28px;
-  font-weight: 400;
-  color: var(--crimson);
-  line-height: 1;
-}
-
-.quoteStat span {
-  font-size: 14px;
-  color: var(--slate-2);
-  line-height: 1.4;
-}
-
-@media (max-width: 940px) {
-  .quotes {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ---------- closing cta ---------- */
 
 .ctaList {
@@ -383,26 +314,6 @@
 
   .whyText {
     font-size: 1.02rem;
-  }
-
-  .quoteText {
-    font-size: 1.13rem;
-  }
-
-  .quoteRole {
-    font-size: 16px;
-  }
-
-  .quoteOrg {
-    font-size: 12px;
-  }
-
-  .quoteStat b {
-    font-size: 30px;
-  }
-
-  .quoteStat span {
-    font-size: 15px;
   }
 
   .ctaList span {
