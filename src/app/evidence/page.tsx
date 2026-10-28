@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { APP_URL } from "@/lib/nav";
 import Eyebrow from "@/components/site/Eyebrow";
 import SiteFooter from "@/components/site/SiteFooter";
 import s from "./page.module.css";
@@ -103,9 +104,9 @@ export default function EvidencePage() {
                 it.
               </p>
               <div className="actions">
-                <Link href="/contact" className="btn">
+                <a href={APP_URL} className="btn">
                   RUN IT ON YOUR ESTATE
-                </Link>
+                </a>
                 <Link href="/platform" className="link-u">
                   HOW IT WORKS
                 </Link>
@@ -440,9 +441,9 @@ export default function EvidencePage() {
               estate.
             </p>
           </div>
-          <Link href="/contact" className="btn btn--sm btn--on-dark">
+          <a href={APP_URL} className="btn btn--sm btn--on-dark">
             GET ACCESS
-          </Link>
+          </a>
         </div>
       </section>
 

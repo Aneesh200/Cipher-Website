@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { APP_URL } from "@/lib/nav";
 import Eyebrow from "@/components/site/Eyebrow";
 import SiteFooter from "@/components/site/SiteFooter";
 import s from "./page.module.css";
@@ -124,9 +125,9 @@ export default function TrustPage() {
                 complete. Both are built in, not settings.
               </p>
               <div className="actions">
-                <Link href="/contact" className="btn">
+                <a href={APP_URL} className="btn">
                   START WITH ONE ASSET
-                </Link>
+                </a>
                 <a href="#safety" className="link-u">
                   SEE THE LIMITS IT RESPECTS
                 </a>

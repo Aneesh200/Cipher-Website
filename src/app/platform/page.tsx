@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { APP_URL } from "@/lib/nav";
 import Eyebrow from "@/components/site/Eyebrow";
 import SiteFooter from "@/components/site/SiteFooter";
 import KnowledgeGraph from "@/components/graph/KnowledgeGraph";
@@ -111,9 +112,9 @@ export default function PlatformPage() {
                 about.
               </p>
               <div className="actions">
-                <Link href="/contact" className="btn">
+                <a href={APP_URL} className="btn">
                   START WITH ONE ASSET
-                </Link>
+                </a>
                 <Link href="/evidence" className="link-u">
                   SEE THE PROOF
                 </Link>
@@ -309,9 +310,9 @@ export default function PlatformPage() {
               record of everything we looked at.
             </p>
           </div>
-          <Link href="/contact" className="btn btn--sm btn--on-dark">
+          <a href={APP_URL} className="btn btn--sm btn--on-dark">
             START WITH ONE ASSET
-          </Link>
+          </a>
         </div>
       </section>
 

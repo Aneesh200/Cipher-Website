@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { APP_URL } from "@/lib/nav";
 import Eyebrow from "@/components/site/Eyebrow";
 import SiteFooter from "@/components/site/SiteFooter";
 import s from "./page.module.css";
@@ -274,9 +275,9 @@ export default function IntegrationsPage() {
                 has to open Cipher for Cipher to work.
               </p>
               <div className="actions" style={{ paddingBottom: 4 }}>
-                <Link href="/contact" className="btn btn--on-dark">
+                <a href={APP_URL} className="btn btn--on-dark">
                   CONNECT YOUR STACK
-                </Link>
+                </a>
                 <a href="#catalogue" className="link-u link-u--on-dark">
                   SEE EVERYTHING
                 </a>
@@ -546,9 +547,9 @@ export default function IntegrationsPage() {
               your next merge. No procurement cycle needed to see it work.
             </p>
           </div>
-          <Link href="/contact" className="btn btn--on-dark">
+          <a href={APP_URL} className="btn btn--on-dark">
             CONNECT YOUR STACK
-          </Link>
+          </a>
         </div>
       </section>
 

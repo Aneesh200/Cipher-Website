@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { NAV } from "@/lib/nav";
+import { APP_URL, NAV } from "@/lib/nav";
 
 export default function SiteNav() {
   const pathname = usePathname();
@@ -135,9 +135,9 @@ export default function SiteNav() {
               {item.label}
             </Link>
           ))}
-          <Link href="/contact" className="nav__cta">
+          <a href={APP_URL} className="nav__cta">
             GET ACCESS
-          </Link>
+          </a>
         </div>
       </div>
     </header>
