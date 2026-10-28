@@ -1,0 +1,399 @@
+/* ---------- hero stats ---------- */
+
+.heroStat {
+  font-size: clamp(2.1rem, 4vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.heroStatBody {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-top: 9px;
+}
+
+/* ---------- benchmark ---------- */
+
+.bench {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.benchLeft {
+  padding: 36px 46px 36px 0;
+  border-right: 1px solid var(--line);
+}
+
+.benchRight {
+  padding: 36px 0 36px 46px;
+}
+
+.benchBig {
+  font-size: clamp(2.6rem, 5.6vw, 4.625rem);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  color: var(--crimson);
+}
+
+@media (max-width: 900px) {
+  .bench {
+    grid-template-columns: 1fr;
+  }
+
+  .benchLeft {
+    padding: 28px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .benchRight {
+    padding: 28px 0;
+  }
+}
+
+.barRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 7px;
+  flex-wrap: wrap;
+}
+
+.barRow span {
+  font-size: clamp(0.875rem, 1vw, 1rem);
+}
+
+.barVal {
+  font-family: var(--font-mono), monospace;
+}
+
+/* ---------- velocity ---------- */
+
+.velBig {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.velBig b {
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.86;
+  color: var(--white);
+  letter-spacing: -0.04em;
+}
+
+.velBig span {
+  font-size: clamp(1.6rem, 3vw, 2.75rem);
+  font-weight: 500;
+  color: var(--rose);
+}
+
+.velBadge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 22px;
+  border: 1px solid var(--crimson);
+  background: #1a0e13;
+  padding: 12px 18px;
+  flex-wrap: wrap;
+}
+
+.velBadge b {
+  font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+  font-weight: 500;
+  color: var(--rose);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.velBadge span {
+  font-size: 15px;
+  color: var(--mute-2);
+}
+
+.velStats {
+  display: flex;
+  gap: 40px;
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--dark-line);
+  flex-wrap: wrap;
+}
+
+.velStats b {
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  font-weight: 400;
+  color: var(--white);
+  display: block;
+}
+
+.velStats span {
+  font-size: 14px;
+  color: var(--mute);
+  margin-top: 5px;
+  display: block;
+}
+
+.pill {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--dark-line-3);
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.pill--hot {
+  color: var(--white);
+  background: var(--crimson);
+  border-color: var(--crimson);
+}
+
+/* ---------- cumulative chart ---------- */
+
+.chart {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--dark-line);
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+  overflow: visible;
+}
+
+.chartAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  gap: 10px;
+}
+
+.chartAxis span {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: var(--slate);
+}
+
+.curve {
+  stroke-dasharray: 640;
+  animation: curveDraw 1.8s var(--ease) 0.2s both;
+}
+
+@keyframes curveDraw {
+  from {
+    stroke-dashoffset: 640;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.curveFill {
+  opacity: 0;
+  animation: fadeSoft 1s ease 1.2s both;
+}
+
+@keyframes fadeSoft {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.16;
+  }
+}
+
+.curveDot {
+  opacity: 0;
+  animation: dotPop 0.4s var(--ease) 1.9s both;
+}
+
+@keyframes dotPop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- examples grid ---------- */
+
+.examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--ink);
+}
+
+.examples > div {
+  padding: 20px 24px 20px 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.examples > div:nth-child(2n) {
+  padding: 20px 0 20px 24px;
+  border-right: none;
+}
+
+.examples > div:nth-last-child(-n + 2) {
+  border-bottom: 1px solid var(--ink);
+}
+
+.examples b {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .examples {
+    grid-template-columns: 1fr;
+  }
+
+  .examples > div,
+  .examples > div:nth-child(2n) {
+    padding: 18px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .examples > div:last-child {
+    border-bottom: 1px solid var(--ink);
+  }
+}
+
+/* ---------- like for like table ---------- */
+
+.table {
+  border-top: 1px solid var(--ink);
+}
+
+.trow {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1.05fr;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.trow--head {
+  border-bottom: 1px solid var(--line);
+}
+
+.trow--last {
+  border-bottom: 1px solid var(--ink);
+}
+
+.trow > div {
+  padding: 18px 24px;
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  color: var(--slate);
+}
+
+.trow > div:first-child {
+  padding-left: 0;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.trow > div:last-child {
+  background: var(--wash-2);
+  color: var(--ink);
+}
+
+.trow--head > div {
+  padding-block: 14px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--mute);
+}
+
+.trow--head > div:last-child {
+  color: var(--crimson);
+}
+
+@media (max-width: 760px) {
+  /* Each row becomes a stacked block; the column header moves into each cell. */
+  .trow--head {
+    display: none;
+  }
+
+  .trow {
+    grid-template-columns: 1fr;
+    padding: 6px 0 12px;
+  }
+
+  .trow > div {
+    padding: 8px 0 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .trow > div:first-child {
+    padding: 12px 0 8px;
+    font-size: 1.05rem;
+  }
+
+  .trow > div:not(:first-child)::before {
+    content: attr(data-col);
+    font-family: var(--font-mono), monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--mute);
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+
+  .trow > div:last-child {
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroStatBody {
+    font-size: 16px;
+  }
+
+  .barRow span {
+    font-size: 1.02rem;
+  }
+
+  .velBadge span,
+  .velStats span {
+    font-size: 15px;
+  }
+
+  .pill {
+    font-size: 12px;
+  }
+
+  .chartAxis span {
+    font-size: 11px;
+  }
+
+  .examples b {
+    font-size: 18px;
+  }
+
+  .trow > div {
+    font-size: 1.02rem;
+  }
+
+  .trow > div:not(:first-child)::before {
+    font-size: 10.5px;
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .mark { fill: #8c1027 }
+    /* The site uses the brighter rose on dark ground; browser chrome is no
+       different, and flat crimson goes muddy against a dark tab strip. */
+    @media (prefers-color-scheme: dark) { .mark { fill: #e14f6c } }
+  </style>
+  <rect class="mark" x="6.5" y="6.5" width="19" height="19" transform="rotate(45 16 16)"/>
+</svg>
