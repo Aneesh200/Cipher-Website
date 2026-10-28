@@ -52,10 +52,6 @@ export default function SiteNav() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  // Already on the contact page, so the CTA jumps to the form rather than
-  // navigating to the page you are on.
-  const ctaHref = pathname === "/contact" ? "#enquiry" : "/contact";
-
   return (
     <header ref={navRef} className={`nav${overDark ? " over-dark" : ""}`}>
       <div className="nav__inner">
@@ -78,9 +74,9 @@ export default function SiteNav() {
         </nav>
 
         <div className="nav__right">
-          <Link href={ctaHref} className="nav__cta">
+          <a href={APP_URL} className="nav__cta">
             GET ACCESS
-          </Link>
+          </a>
 
           {/* Both marks ship so the swap on the inverted nav costs no request. */}
           <a
