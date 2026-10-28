@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { APP_URL } from "@/lib/nav";
 import Eyebrow from "@/components/site/Eyebrow";
 import SiteFooter from "@/components/site/SiteFooter";
 import OrwellConsole from "@/components/console/OrwellConsole";
@@ -87,9 +88,9 @@ export default function Home() {
                 so what you shipped this morning is already tested.
               </p>
               <div className="actions" style={{ paddingBottom: 4 }}>
-                <Link href="/contact" className="btn">
+                <a href={APP_URL} className="btn">
                   START WITH ONE ASSET
-                </Link>
+                </a>
                 <a href="#demo" className="link-u">
                   WATCH IT WORK
                 </a>
@@ -390,9 +391,9 @@ export default function Home() {
               everything we looked at.
             </p>
             <div className="actions">
-              <Link href="/contact" className="btn btn--sm btn--on-dark">
+              <a href={APP_URL} className="btn btn--sm btn--on-dark">
                 START WITH ONE ASSET
-              </Link>
+              </a>
               <Link href="/evidence" className="link-u link-u--on-dark">
                 SEE THE PROOF
               </Link>
