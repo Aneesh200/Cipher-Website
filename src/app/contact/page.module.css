@@ -195,6 +195,37 @@
   max-width: 300px;
 }
 
+/* ---------- bot checks ---------- */
+
+/* Off-screen rather than display:none, which some form bots skip. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.turnstile {
+  min-height: 65px;
+}
+
+.turnstileNote {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mute);
+}
+
+.turnstileNote.is-error {
+  color: var(--crimson);
+}
+
+.turnstileNote a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* ---------- direct contact ---------- */
 
 .direct {

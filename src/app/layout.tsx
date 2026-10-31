@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import UtilBar from "@/components/site/UtilBar";
 import SiteNav from "@/components/site/SiteNav";
@@ -59,6 +60,7 @@ export default function RootLayout({
         <SiteNav />
         <main>{children}</main>
         <ScrollFx />
+        <Analytics />
       </body>
     </html>
   );

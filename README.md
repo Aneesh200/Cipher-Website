@@ -68,20 +68,66 @@ runtime.
 ## Contact form
 
 `components/contact/EnquiryForm.tsx` posts to `app/api/enquiry/route.ts`, which
-sends two mails through nodemailer over Gmail — a notification to the team and
-an acknowledgement to the enquirer. Same approach as the Authify site.
+sends one mail through nodemailer over Gmail: a notification to the team, with
+the enquirer as reply-to. There is deliberately no acknowledgement to the
+submitted address, since that let anyone make our mailbox send branded mail to
+any inbox.
 
-Required environment variables (set in Vercel for production, `.env.local`
-locally — never committed):
+### Bot protection
 
-| Variable            | Purpose                                              |
-| ------------------- | ---------------------------------------------------- |
-| `EMAIL_USER`        | Gmail account the mail is sent from                   |
-| `EMAIL_PASS`        | Gmail **app password**, not the account password      |
-| `CONTACT_RECIPIENT` | Inbox that receives enquiries (defaults to `EMAIL_USER`) |
+Same level as authify.tech (AUT-1303), added in AUT-1510. The route applies, in
+order:
 
-Without them the endpoint returns 503 with a message pointing people at
-`contact@authify.tech` rather than failing silently.
+1. `415` on a non-JSON body, and in production `403` on a missing or foreign
+   `Origin`. Allowed origins are the project's custom domains, listed in
+   `PRODUCTION_HOSTS`.
+2. A per-IP rate limit of 5 requests per 10 minutes, held in memory per instance.
+3. An off-screen honeypot field. A filled one gets a fake success and nothing
+   is sent.
+4. A strict single-address email check, control-character stripping, length
+   caps and full HTML escaping.
+5. Cloudflare Turnstile, verified server-side whenever `TURNSTILE_SECRET_KEY`
+   is set. Action and hostname are checked in production only, because
+   Cloudflare's test keys report neither.
+
+Subjects are built server-side, and the authify.tech flood shape is tagged
+`[SPAM?]` without being dropped. Every request logs one JSON line with
+`evt: "enquiry_api"`, and the same IP, Vercel geo, JA4 and user-agent block is
+appended to the notification so the inbox keeps the evidence after Vercel's
+runtime logs expire.
+
+On the Vercel project, the firewall mirrors authify.tech's: Vercel's managed bot
+protection and the OWASP `gen`, `rce`, `sqli` and `xss` rule sets in log mode,
+plus a log-only custom rule on `POST /api/enquiry`. Vercel Web Analytics is
+mounted in the root layout.
+
+### Environment variables
+
+Set in Vercel for production, `.env.local` locally, never committed:
+
+| Variable                         | Purpose                                                  |
+| -------------------------------- | -------------------------------------------------------- |
+| `EMAIL_USER`                     | Gmail account the mail is sent from                      |
+| `EMAIL_PASS`                     | Gmail **app password**, not the account password         |
+| `CONTACT_RECIPIENT`              | Inbox that receives enquiries (defaults to `EMAIL_USER`) |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Turnstile site key, inlined at **build** time            |
+| `TURNSTILE_SECRET_KEY`           | Turnstile secret, read by the API route at runtime       |
+
+Without the mail variables the endpoint returns 503 with a message pointing
+people at `contact@authify.tech` rather than failing silently.
+
+Set **both** Turnstile keys or **neither**. The server enforces Turnstile
+whenever the secret is present, and the site key is baked into the build, so a
+secret without a site key refuses every lead. Changing either one needs a
+redeploy. The production widget lives in the Cloudflare dashboard under
+Turnstile, in Managed mode, with hostnames `ciphersecurity.ai` and
+`cipher.authify.tech`. Preview and Development use Cloudflare's always-pass
+test keys:
+
+```
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+```
 
 ## Develop
 
